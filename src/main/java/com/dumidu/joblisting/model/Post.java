@@ -12,8 +12,8 @@ public class Post {
     private int exp;
     private String techs[];
 
-    public Post(String profile) {
-        this.profile = profile;
+    public Post() {
+
     }
 
     public String getDesc() {
