@@ -1,5 +1,6 @@
 package com.dumidu.joblisting.Repo;
 
+//import from mongodb pipes
 import com.dumidu.joblisting.model.Post;
 import com.mongodb.client.AggregateIterable;
 import com.mongodb.client.MongoClient;
@@ -9,6 +10,7 @@ import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.convert.MongoConverter;
 import org.springframework.stereotype.Component;
+//
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,6 +33,7 @@ public class SearchRepositoryImpl implements SearchRepository
 
         final List<Post> posts = new ArrayList<>();
 
+        //import from mongodb pipes
         MongoDatabase database = client.getDatabase("dumidu");
         MongoCollection<Document> collection = database.getCollection("JobPost");
 
@@ -40,6 +43,7 @@ public class SearchRepositoryImpl implements SearchRepository
                                 new Document("$sort",
                                 new Document("exp", 1L)),
                                 new Document("$limit", 5L)));
+       //
 
         result.forEach(doc -> posts.add(converter.read(Post.class,doc)));
 
